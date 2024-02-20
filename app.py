@@ -27,8 +27,7 @@ def validateUrl(url):
             return {"error":"Invalid Url"}
 
     except Exception as e:
-        return {"error":"Failed to fetch data, please try again later",
-                "message":e}
+        return {"error":"Failed to fetch data, please try again later","message":str(e)}
 def get_soup(url,company):    
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
     req= requests.get(url,headers=headers)
@@ -61,10 +60,10 @@ def get_soup(url,company):
 @app.route('/', methods=['POST','GET'])
 def fetchData():
     if request.method == 'GET':
-        url= request.args.get("url")
+        url= request.args.get("url").strip()
         return validateUrl(url)
     if request.method == 'POST':
-        url= request.get_json()['url']
+        url= request.get_json()['url'].strip()
         return validateUrl(url)
 
 
