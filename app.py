@@ -60,10 +60,10 @@ def get_soup(url,company):
 @app.route('/', methods=['POST','GET'])
 def fetchData():
     if request.method == 'GET':
-        url= request.args.get("url").strip()
+        url= request.args.get("url")
         return validateUrl(url)
     if request.method == 'POST':
-        url= request.get_json()['url'].strip()
+        url= request.get_json()['url']
         return validateUrl(url)
 
 
