@@ -61,10 +61,15 @@ def get_soup(url,company):
 def fetchData():
     if request.method == 'GET':
         url= request.args.get("url")
-        return validateUrl(url)
+        if(url==None):
+            return {"message":"API Is Running"}
+           
+        return validateUrl(url.strip())
     if request.method == 'POST':
         url= request.get_json()['url']
-        return validateUrl(url)
+        if(url==None):
+            return {"message":"API Is Running"}
+        return validateUrl(url.strip())
 
 
 if __name__ == '__main__':
