@@ -4,6 +4,28 @@ This project is a Python Flask API designed to scrape product information from A
 
 ## Use API
 
+1. (GET method) Copy the URL And Replace 'ProductCopyUrl' with product Url
+
+   ```
+    https://getamaflip.onrender.com/?url= ProductCopyUrl`
+
+   ```
+
+2. (POST method) Copy the URL And Replace 'ProductCopyUrl' with product Url
+
+   ```
+    https://getamaflip.onrender.com/
+
+   ```
+
+   Body Data
+
+```json
+{
+  "url": "ProductCopyUrl"
+}
+```
+
 ## Response Format
 
 The API responds with JSON data containing the following fields:
@@ -33,7 +55,7 @@ Example response:
 1. Clone this repository to your local machine:
 
    ```
-   git clone https://github.com/your_username/your_project.git
+   git clone https://github.com/itzDM/Amazon-flipkart-scrap.git
    ```
 
 2. Navigate to the project directory:
@@ -62,7 +84,7 @@ Example response:
 
 2. Once the server is running, you can make HTTP requests to the following endpoints:
 
-   - `/yourHostUrl/?url= copyUrl`
+   - `/yourHostUrl/?url= copyUrl` (GET Method)
 
 3. Example usage with cURL:
 
