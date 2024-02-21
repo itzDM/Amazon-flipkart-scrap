@@ -2,30 +2,6 @@
 
 This project is a Python Flask API designed to scrape product information from Amazon and Flipkart websites. It retrieves product details such as title, price, image, and rating from the provided URLs. This API can be integrated into various applications to fetch real-time data from these e-commerce platforms.
 
-## Use API
-
-1. (GET method) Copy the URL And Replace 'ProductCopyUrl' with product Url
-
-   ```
-    https://getamaflip.onrender.com/?url= ProductCopyUrl`
-
-   ```
-
-2. (POST method) Copy the URL And Replace 'ProductCopyUrl' with product Url
-
-   ```
-    https://getamaflip.onrender.com/
-
-   ```
-
-   Body Data
-
-```json
-{
-  "url": "ProductCopyUrl"
-}
-```
-
 ## Response Format
 
 The API responds with JSON data containing the following fields:
@@ -75,22 +51,32 @@ Example response:
 1. Run the Flask API:
 
    ```
-   python app.py
-   ```
-
-   ```
-   flask --app app run --debug
+   python api/app.py
    ```
 
 2. Once the server is running, you can make HTTP requests to the following endpoints:
 
-   - `/yourHostUrl/?url= copyUrl` (GET Method)
-
-3. Example usage with cURL:
+3. (GET method) Copy the URL And Replace 'ProductCopyUrl' with product Url
 
    ```
-   curl http://127.0.0.1:5000/?url=https://www.amazon.com/example-product
+    http://yourLocalHost/?url=ProductCopyUrl`
+
    ```
+
+4. (POST method) Copy the URL And Replace 'ProductCopyUrl' with product Url
+
+   ```
+    http://yourLocalHost/
+
+   ```
+
+   Body Data
+
+```json
+{
+  "url": "ProductCopyUrl"
+}
+```
 
 ## Disclaimer
 
