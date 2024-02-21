@@ -1,6 +1,7 @@
 from flask import Flask, request
 import requests
 import re
+import html5lib
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
@@ -29,9 +30,9 @@ def validateUrl(url):
     except Exception as e:
         return {"error":"Failed to fetch data, please try again later","message":str(e)}
 def get_soup(url,company):    
-    # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
-    req= requests.get(url)
-    soup = BeautifulSoup(req._content, 'html.parser')
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+    req= requests.get(url,headers=headers)
+    soup = BeautifulSoup(req._content, 'html5lib')
     if(company=="flipkart"):
         title = soup.find('span', {"class":"B_NuCI"}).get_text(strip=True)
         img= soup.find('img', {"class":"q6DClP"}).get('src')
