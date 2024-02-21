@@ -29,8 +29,8 @@ def validateUrl(url):
     except Exception as e:
         return {"error":"Failed to fetch data, please try again later","message":str(e)}
 def get_soup(url,company):    
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
-    req= requests.get(url,headers=headers)
+    # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+    req= requests.get(url)
     soup = BeautifulSoup(req._content, 'html.parser')
     if(company=="flipkart"):
         title = soup.find('span', {"class":"B_NuCI"}).get_text(strip=True)
@@ -42,7 +42,7 @@ def get_soup(url,company):
             rating=0
         else:
             ratingDiv = soup.find_all("span", {"id":["productRating_LSTACCGC4GN5SQR7ZCZYKXWJM_ACCGC4GN5SQR7ZCZ_","productRating_LSTWATFFDFZHZAVGZHJWL2XH4_WATFFDFZHZAVGZHJ_"]})[0]
-            rating=float(ratingDiv.find("div").getText(strip=True))
+            rating=float(ratingDiv.find("div").get_text(strip=True))
         price = soup.find('div', {"class":"_30jeq3 _16Jk6d"}).get_text(strip=True)
         price = extract_price(price)
         data=dict(currentPrice=price,url=url,company=company,title=title,img=img,rating=rating)
