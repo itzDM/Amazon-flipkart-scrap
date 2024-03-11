@@ -80,4 +80,5 @@ Example response:
 
 ## Disclaimer
 
+
 This project is for educational purposes only. Scraping e-commerce websites may violate their terms of service. Use responsibly and respect the terms and conditions of the websites you scrape.
